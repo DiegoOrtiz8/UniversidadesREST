@@ -13,8 +13,10 @@ public class Comandos implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        /*
         Carrera finanzas = new Carrera(null, "Ingenieria en finanzas", 20, 3);
         Carrera carreraGuardada = carreraDAO.guardar(finanzas);
         System.out.println(carreraGuardada.toString());
+         */
     }
 }
