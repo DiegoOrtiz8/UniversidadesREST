@@ -31,8 +31,8 @@ public class UniversidadesRestApplication {
             Persona personaGuardada = alumnoDAO.guardar(alumno);
             System.out.println(personaGuardada.toString());
              */
-            List<Persona> alumnos = (List<Persona>)  alumnoDAO.buscarTodos();
-            alumnos.forEach(System.out::println);
+            //List<Persona> alumnos = (List<Persona>)  alumnoDAO.buscarTodos();
+            //alumnos.forEach(System.out::println);
         };
     }
 

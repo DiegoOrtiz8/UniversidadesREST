@@ -14,7 +14,6 @@ import java.util.Set;
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
 @Entity
 @Table(name = "carreras", schema = "universidad")
 public class Carrera implements Serializable {
@@ -49,6 +48,18 @@ public class Carrera implements Serializable {
         this.nombre = nombre;
         this.cantidadMaterias = cantidadMaterias;
         this.cantidadAnios = cantidadAnios;
+    }
+
+    @Override
+    public String toString() {
+        return "Carrera{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", cantidadMaterias=" + cantidadMaterias +
+                ", cantidadAnios=" + cantidadAnios +
+                ", fechaAlta=" + fechaAlta +
+                ", fechaModificacion=" + fechaModificacion +
+                '}';
     }
 
     @Override
