@@ -15,4 +15,9 @@ public class CarreraDAOImpl extends GenericoDAOImpl<Carrera, CarreraRepository> 
     public CarreraDAOImpl(CarreraRepository repository) {
         super(repository);
     }
+
+    @Override
+    public Iterable<Carrera> buscarCarrerasPorProfesorNombreYApellido(String nombre, String apellido) {
+        return repository.buscarCarrerasPorProfesorNombreYApellido(nombre, apellido);
+    }
 }
