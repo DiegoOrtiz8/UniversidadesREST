@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AulaRepository extends CrudRepository<Aula, Integer> {
-    @Query("select a from Aula a where a.tipoPizarron = ?1")
+
+    @Query("select a from Aula a where a.pizarron = ?1")
     public Iterable<Aula> findAulabyTipoPizarronAfter(Pizarron pizarron);
 
     @Query("select a from Aula a join fetch a.pabellon p  where p.nombre = ?1")
