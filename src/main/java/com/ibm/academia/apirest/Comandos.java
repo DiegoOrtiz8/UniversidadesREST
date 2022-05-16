@@ -22,19 +22,26 @@ public class Comandos implements CommandLineRunner {
         System.out.println(carreraGuardada.toString());
          */
 
+        /*
+        Carrera carrera = null;
 
-        Integer id = 11;
-
-        Optional<Carrera> oCarrera = carreraDAO.buscarPorId(id);
+        Optional<Carrera> oCarrera = carreraDAO.buscarPorId(1);
         if(oCarrera.isPresent()) {
-             Carrera carrera = oCarrera.get();
+             carrera = oCarrera.get();
             System.out.println(carrera.toString());
         }
         else {
             System.out.println("Carrera no encontrada");
         }
+        carrera.setCantidadAnios(7);
+        carrera.setCantidadMaterias(66);
+        carreraDAO.guardar(carrera);
 
+        System.out.println(carreraDAO.buscarPorId(7).orElse(new Carrera()).toString());
 
+         */
 
+        //carreraDAO.eliminarPorId(3);
+        //System.out.println(carreraDAO.buscarPorId(3).orElse(new Carrera()).toString());
     }
 }
