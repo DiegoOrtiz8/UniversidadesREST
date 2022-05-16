@@ -18,6 +18,6 @@ public class PabellonDAOImpl extends GenericoDAOImpl<Pabellon, PabellonRepositor
 
     @Override
     public Iterable<Pabellon> findPabellonbyNombreAfter(String nombre) {
-        return repository.findPabellonbyNombreAfter(nombre)
+        return repository.findPabellonbyNombreAfter(nombre);
     }
 }
