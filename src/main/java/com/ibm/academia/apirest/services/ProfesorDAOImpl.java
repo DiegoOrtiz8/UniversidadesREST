@@ -2,6 +2,7 @@ package com.ibm.academia.apirest.services;
 
 import com.ibm.academia.apirest.entities.Persona;
 import com.ibm.academia.apirest.repositories.PersonaRepository;
+import com.ibm.academia.apirest.repositories.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,6 @@ public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO{
 
     @Override
     public Iterable<Persona> findProfesoresByCarrera(String nombre) {
-        return ((ProfesorDAO)repository).findProfesoresByCarrera(nombre);
+        return ((ProfesorRepository)repository).findProfesoresByCarrera(nombre);
     }
 }
