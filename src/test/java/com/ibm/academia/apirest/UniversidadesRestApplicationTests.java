@@ -1,13 +1,34 @@
 package com.ibm.academia.apirest;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
 class UniversidadesRestApplicationTests {
 
+    Calculadora calculadora = new Calculadora();
+
     @Test
-    void contextLoads() {
+    @DisplayName("Test: Suma de valores")
+    void sumaValor() {
+        // Given -> Define el contexto o las precondiciones
+        Integer valorA = 3;
+        Integer valorB = 3;
+
+
+        // When -> Ejecutar la accion, es decir, que quiere probar
+        Integer expected = calculadora.sumar(valorA, valorB);
+
+        // Then -> Validar que lo que se esta probando funciona correctamente
+        Integer resultadoEsperado = 5;
+        assertThat(expected).isEqualTo(resultadoEsperado);
+    }
+
+    class Calculadora {
+        Integer sumar(Integer a, Integer b) {
+            return a + b;
+        }
     }
 
 }
