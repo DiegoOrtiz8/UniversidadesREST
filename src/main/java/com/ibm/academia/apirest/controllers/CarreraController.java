@@ -1,6 +1,8 @@
 package com.ibm.academia.apirest.controllers;
 
 import com.ibm.academia.apirest.exceptions.NotFoundException;
+import com.ibm.academia.apirest.mapper.CarreraMapper;
+import com.ibm.academia.apirest.models.dto.CarreraDTO;
 import com.ibm.academia.apirest.models.entities.Carrera;
 import com.ibm.academia.apirest.exceptions.BadRequestException;
 import com.ibm.academia.apirest.services.CarreraDAO;
@@ -110,5 +112,25 @@ public class CarreraController {
         respuesta.put("OK", "Carrera ID: " + carreraId + " eliminada exitosamente");
 
         return new ResponseEntity<Map<String, Object>>(respuesta, HttpStatus.ACCEPTED);
+    }
+
+    /**
+     * Endpoint para consultar todas las carreras
+     * @return Retorna una lista de carreras en DTO
+     * @NotFoundException En caso de que no encuentre ningun elemento en la base de datos
+     * @author DECO 19/05/2022
+     */
+    @GetMapping("/carreras/dto")
+    public ResponseEntity<?> obtenerCarrerasDTO() {
+        List<Carrera> carreras = (List<Carrera>) carreraDAO.buscarTodos();
+
+        if(carreras.isEmpty())
+            throw new NotFoundException("No existen carreras en la base de datos");
+
+        List<CarreraDTO> listaCarreras = carreras
+                .stream()
+                .map(CarreraMapper::mapCarrera)
+                .collect(Collectors.toList());
+        return new ResponseEntity<List<CarreraDTO>>(listaCarreras, HttpStatus.OK);
     }
 }

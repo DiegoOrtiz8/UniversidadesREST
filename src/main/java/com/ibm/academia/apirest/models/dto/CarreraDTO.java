@@ -1,6 +1,6 @@
 package com.ibm.academia.apirest.models.dto;
 
-/*import lombok.AllArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,4 +30,3 @@ public class CarreraDTO {
     @Positive(message = "El valor debe ser mayor a 0")
     private Integer cantidadAnios;
 }
-*/
