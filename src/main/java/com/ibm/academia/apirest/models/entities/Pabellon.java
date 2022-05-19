@@ -1,36 +1,31 @@
-package com.ibm.academia.apirest.entities;
+package com.ibm.academia.apirest.models.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import java.util.Set;
 
 @Setter
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "personas", schema = "universidad")
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Persona implements Serializable {
+@Table(name = "pabellones", schema = "universidad")
+public class Pabellon implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nombre", nullable = false, length = 60)
+    @Column(name = "metros_cuadrados")
+    private Double metrosCuadrados;
+
+    @Column(name = "nombre", unique = true, nullable = false)
     private String nombre;
-
-    @Column(name = "apellido", nullable = false, length = 60)
-    private String apellido;
-
-    @Column(name = "dni", nullable = false, unique = true, length = 10)
-    private String dni;
 
     @Column(name = "fecha_alta")
     private Date fechaAlta;
@@ -45,11 +40,13 @@ public abstract class Persona implements Serializable {
     })
     private Direccion direccion;
 
-    public Persona(Integer id, String nombre, String apellido, String dni, Direccion direccion) {
+    @OneToMany(mappedBy = "pabellon", fetch = FetchType.LAZY)
+    private Set<Aula> aulas;
+
+    public Pabellon(Integer id, Double metrosCuadrados, String nombre, Direccion direccion) {
         this.id = id;
+        this.metrosCuadrados = metrosCuadrados;
         this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
         this.direccion = direccion;
     }
 
@@ -57,13 +54,13 @@ public abstract class Persona implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Persona persona = (Persona) o;
-        return Objects.equals(id, persona.id) && Objects.equals(dni, persona.dni);
+        Pabellon pabellon = (Pabellon) o;
+        return Objects.equals(id, pabellon.id) && Objects.equals(nombre, pabellon.nombre);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dni);
+        return Objects.hash(id, nombre);
     }
 
     @PrePersist

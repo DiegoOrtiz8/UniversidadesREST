@@ -2,15 +2,14 @@ package com.ibm.academia.apirest.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import com.ibm.academia.apirest.datos.DatosDummy;
-import com.ibm.academia.apirest.entities.Empleado;
-import com.ibm.academia.apirest.entities.Persona;
-import com.ibm.academia.apirest.entities.Profesor;
+import com.ibm.academia.apirest.models.entities.Empleado;
+import com.ibm.academia.apirest.models.entities.Persona;
+import com.ibm.academia.apirest.models.entities.Profesor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.ArrayList;
 import java.util.List;
